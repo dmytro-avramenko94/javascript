@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .page-title {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .page-title__lvl {
+            color: red;
+        }
+
+        .item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid;
+            border-radius: 20px;
+            max-width: 400px;
+        }
+
+        .inp1 {
+            width: 200px;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .title {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="page-title">Homework <span class="page-title__lvl">hard</span> lvl</h1>
+
+    <div class="circle-item item">
+        <h4 class="circle-item__title title">Введіть радіус окружності (м)</h4>
+        <input class="inp1" type="number">
+        <button class="btn1-1">Порахувати</button>
+        <div class="result">Площа окружності: <span class="res1"></span></div>
+    </div>
+
+    <div class="speed-item item">
+        <h4 class="speed-item__title">Введіть відстань (км)</h4>
+        <input class="inp2-1" type="number">
+        <h4 class="speed-item__title">Введіть час (год)</h4>
+        <input class="inp2-2" type="number">
+        <button class="btn2-1">Порахувати</button>
+        <div class="result">Необхідна швидкість руху: <span class="res2"></span></div>
+    </div>
+
+    <div class="currency-item item">
+        <h4 class="circle-item__title title">Введіть сумму ($)</h4>
+        <input class="inp3" type="number">
+        <button class="btn3-1">Порахувати</button>
+        <p class="currency-item__rate">Курс: <span class="res3-1"></span></p>
+        <div class="result">Значення: <span class="res3-2"></span></div>
+    </div>
+
+    <div class="currency-item-2 item">
+        <h4 class="circle-item__title title">Введіть сумму</h4>
+        <select class="currency">
+            <option class="currency-usd">USD</option>
+            <option class="currency-uah">UAH</option>
+        </select>
+        <input class="inp4" type="number">
+        <button class="btn4">Порахувати</button>
+        <p class="currency-item__rate">Курс: <span class="res4-1"></span></p>
+        <div class="result">Значення: <span class="res4-2"></span></div>
+    </div>
+
+
+
+    <script>
+
+        let inp1 = document.querySelector('.inp1')
+        let btn1_1 = document.querySelector('.btn1-1')
+        let res1 = document.querySelector('.res1')
+        let pi = 3.14
+
+        btn1_1.onclick = () => {
+            res1.innerHTML = pi * inp1.value * inp1.value + "м<sup>2</sup>"
+        }
+
+        let inp2_1 = document.querySelector('.inp2-1')
+        let inp2_2 = document.querySelector('.inp2-2')
+        let btn2_1 = document.querySelector('.btn2-1')
+        let res2 = document.querySelector('.res2')
+
+        btn2_1.onclick = () => {
+            res2.innerHTML = inp2_1.value / inp2_2.value + " км/год"
+        }
+
+        let inp3 = document.querySelector('.inp3')
+        let btn3 = document.querySelector('.btn3-1')
+        let res3_1 = document.querySelector('.res3-1')
+        let res3_2 = document.querySelector('.res3-2')
+        const rate = 0.92
+
+        btn3.onclick = () => {
+            res3_1.innerHTML = rate
+            res3_2.innerHTML = inp3.value * rate + " €"
+        }
+
+        let inp4 = document.querySelector('.inp4')
+        let btn4 = document.querySelector('.btn4')
+        let res4_1 = document.querySelector('.res4-1')
+        let res4_2 = document.querySelector('.res4-2')
+        let currency = document.querySelector('.currency')
+        let currencyUSD = document.querySelector('.currency-usd')
+        let currencyUAH = document.querySelector('.currency-uah')
+        const rateUSD = 0.92
+        const rateUAH = 0.024
+
+        btn4.onclick = () => {
+            if (currency = currencyUSD) {
+                res4_1.innerHTML = rateUSD
+                res4_2.innerHTML = inp4.value * rateUSD + " €"
+            }
+            if (currency = currencyUAH) {
+                res4_1.innerHTML = rateUAH
+                res4_2.innerHTML = inp4.value * rateUAH + " €"
+            }
+        }
+
+    </script>
+</body>
+
+</html>

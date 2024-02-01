@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>First JS Lesson</h1>
+
+    <div class="item">
+        <h4>Name</h4>
+        <input class="inp" type="text">
+        <h4>Last name</h4>
+        <input class="inp2" type="text">
+        <h4>Age</h4>
+        <input class="inp3" type="number" name="" id="">
+        <button class="btn">Add</button>
+        <button class="btn-res">Reset</button>
+    </div>
+
+    <div class="item">
+        <h5>Hello: <span class="out"></span></h5>
+        <h5>Age: <span class="out2"></span></h5>
+    </div>
+
+    <script>
+
+        // 1.Куди вводимо (input)
+        // 2.Кнопка
+        // 3.Вивід результату (div)
+
+        let inp = document.querySelector('.inp')
+        let inp2 = document.querySelector('.inp2')
+        let inp3 = document.querySelector('.inp3')
+        let btnAdd = document.querySelector('.btn')
+        let btnRes = document.querySelector('.btn-res')
+        let out = document.querySelector('.out')
+        let out2 = document.querySelector('.out2')
+
+
+
+        btnAdd.onclick = () => {
+            out.innerHTML += inp.value + " " + inp2.value
+            out2.innerHTML += inp3.value
+        }
+
+        btnRes.onclick = () => {
+            out.innerHTML = ""
+            out2.innerHTML = ""
+            inp.value = ""
+            inp2.value = ""
+            inp3.value = ""
+        }
+
+    </script>
+</body>
+
+</html>
