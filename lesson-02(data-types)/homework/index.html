@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 200px;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 20px;
+        }
+
+        .task-min-3 {
+            max-width: 250px;
+        }
+
+        .result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task-min-1 container">
+        <input type="number" class="inp-min-1-1" value="0.1">
+        <input type="number" class="inp-min-1-2" value="0.2">
+        <button class="btn-1">Calculate</button>
+        <div class="out-min-1">Result: <span class="min-1-result result"></span></div>
+    </div>
+
+    <div class="task-min-2 container">
+        <input type="text" class="inp-min-2-1">
+        <input type="text" class="inp-min-2-2">
+        <button class="btn-2">Calculate</button>
+        <div class="out-min-2">Result: <span class="min-2-result result"></span></div>
+    </div>
+
+    <div class="task-min-3 container">
+        <p>Please put flash drive memory (Gb)</p>
+        <input type="text" class="inp-min-3">
+        <button class="btn-3">Calculate</button>
+        <div class="out-min-3">Enough space for: <span class="min-3-1-result result"></span><span> files</span></div>
+        <div class="out-min-3">Memory left: <span class="min-3-2-result result"></span><span> Mb</span></div>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
