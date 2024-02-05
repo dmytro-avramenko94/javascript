@@ -130,22 +130,26 @@
             res3_2.innerHTML = inp3.value * rate + " €"
         }
 
-        let inp4 = document.querySelector('.inp4').value
+
         let btn4 = document.querySelector('.btn4')
-        let res4_1 = document.querySelector('.res4-1')
-        let res4_2 = document.querySelector('.res4-2')
-        let currency = document.querySelector('.currency').value
-        let currencyRate;
-        const rateUSD = 0.92
-        const rateUAH = 0.024
-        const ratePLN = 0.23
+
+
 
 
         btn4.onclick = () => {
+            let inp4 = document.querySelector('.inp4').value
+            let res4_1 = document.querySelector('.res4-1')
+            let res4_2 = document.querySelector('.res4-2')
+            let currency = document.querySelector('.currency').value
+            const rateUSD = 0.92
+            const rateUAH = 0.024
+            const ratePLN = 0.23
+            let currencyRate;
+
             if (currency === 'USD') {
                 currencyRate = rateUSD
             }
-            else if (currency == 'UAH') {
+            else if (currency === 'UAH') {
                 currencyRate = rateUAH
             }
             else if (currency === 'PLN') {
