@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <input class="inp1" type="number">
+    <select class="sel" name="" id="">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+    </select>
+    <input class="inp1-1" type="number">
+    <button class="btn1">Sign In</button>
+
+    <div class="out1"></div>
+
+    <script>
+        let inp1 = document.querySelector('.inp1')
+        let inp11 = document.querySelector('.inp1-1')
+        let btn1 = document.querySelector('.btn1')
+        let out1 = document.querySelector('.out1')
+        let sel = document.querySelector('.sel')
+
+        if (btn1) {
+            btn1.onclick = () => {
+
+                console.log(inp11.value == false)
+
+                if (sel.value == '+') {
+                    console.log('test')
+                    out1.innerHTML = Number(inp1.value) + Number(inp11.value)
+
+                }
+                else if (sel.value == '-') {
+                    out1.innerHTML = inp1.value - inp11.value
+                }
+                else if (sel.value == '*') {
+                    out1.innerHTML = inp1.value * inp11.value
+                }
+
+
+
+                // else if (inp11.value == false || inp1.value == false) {
+                //     out1.innerHTML = "Please put 2 numbers"
+                // }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

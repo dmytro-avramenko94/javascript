@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input class="inp1" type="text" placeholder="Login">
+    <input class="inp1-1" type="password" placeholder="Password">
+    <button class="btn1">Sign In</button>
+
+    <div class="out1"></div>
+
+    <script>
+        let inp1 = document.querySelector('.inp1')
+        let inp1_1 = document.querySelector('.inp1-1')
+        let btn1 = document.querySelector('.btn1')
+        let out1 = document.querySelector('.out1')
+
+        if (btn1) {
+            btn1.onclick = () => {
+                if (inp1.value == 'Dima' && inp1_1.value == '123') {
+                    out1.innerHTML = "Confirmed"
+                }
+                else if (inp1.value == 'Dima' || inp1_1.value == '123') {
+                    out1.innerHTML = "Forget Login or Password?"
+                }
+                else {
+                    out1.innerHTML = "Not correct information"
+                }
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

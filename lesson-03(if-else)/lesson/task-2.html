@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <input class="inp1" type="text" placeholder="Login">
+    <input class="inp1-1" type="number" placeholder="Age">
+    <button class="btn1">Sing In</button>
+
+
+
+    <div class="out1"></div>
+
+    <script>
+        let inp1 = document.querySelector('.inp1')
+        let inp101 = document.querySelector('.inp1-1')
+        let btn1 = document.querySelector('.btn1')
+
+
+        let out1 = document.querySelector('.out1')
+
+        //Оператор "<": Меньше
+        //Оператор ">": Більше
+
+        //Оператор "<=": Меньше або дорівнює
+        //Оператор ">=": Більше або дорівнює
+
+        if (btn1) {
+            btn1.onclick = () => {
+                if (+inp101.value >= 18 && +inp101.value < 25) {
+                    out1.innerHTML = "Goden"
+                }
+                else if (+inp101.value >= 25 && +inp101.value < 60) {
+                    out1.innerHTML = "Kontraktna slujba"
+                }
+                else {
+                    out1.innerHTML = "Ne goden"
+                }
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
