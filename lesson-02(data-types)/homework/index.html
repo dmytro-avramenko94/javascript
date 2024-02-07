@@ -7,7 +7,9 @@
     <title>Document</title>
 
     <style>
-        body {
+        .minimum,
+        .normal,
+        .maximum {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -24,38 +26,92 @@
             border-radius: 20px;
         }
 
-        .task-min-3 {
+        .task-min-3,
+        .task-norm-2,
+        .task-max-1 {
             max-width: 250px;
         }
 
         .result {
             font-weight: bold;
         }
+
+        .title {
+            text-align: center;
+            margin: 1px;
+        }
+
+        .text {
+            margin: 1px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    <div class="task-min-1 container">
-        <input type="number" class="inp-min-1-1" value="0.1">
-        <input type="number" class="inp-min-1-2" value="0.2">
-        <button class="btn-1">Calculate</button>
-        <div class="out-min-1">Result: <span class="min-1-result result"></span></div>
+    <div class="minimum">
+        <div class="task-min-1 container">
+            <h4 class="title">Task minimum No.1</h4>
+            <input type="number" class="inp-min-1-1" value="0.1">
+            <input type="number" class="inp-min-1-2" value="0.2">
+            <button class="btn-1">Calculate</button>
+            <div class="out-min-1">Result: <span class="min-1-result result"></span></div>
+        </div>
+
+        <div class="task-min-2 container">
+            <h4 class="title">Task minimum No.2</h4>
+            <input type="text" class="inp-min-2-1" value="'1'">
+            <input type=" text" class="inp-min-2-2" value="2">
+            <button class="btn-2">Calculate</button>
+            <div class="out-min-2">Result: <span class="min-2-result result"></span></div>
+        </div>
+
+        <div class="task-min-3 container">
+            <h4 class="title">Task minimum No.3</h4>
+            <p class="text">Please put flash drive memory (Gb)</p>
+            <input type="text" class="inp-min-3">
+            <button class="btn-3">Calculate</button>
+            <div class="out-min-3">Enough space for: <span class="min-3-1-result result"></span><span> files</span>
+            </div>
+            <div class="out-min-3">Memory left: <span class="min-3-2-result result"></span><span> Mb</span></div>
+        </div>
     </div>
 
-    <div class="task-min-2 container">
-        <input type="text" class="inp-min-2-1">
-        <input type="text" class="inp-min-2-2">
-        <button class="btn-2">Calculate</button>
-        <div class="out-min-2">Result: <span class="min-2-result result"></span></div>
+    <div class="normal">
+        <div class="task-norm-1 container">
+            <h4 class="title">Task normal No.1</h4>
+            <p class="text">Please put money amount</p>
+            <input type="number" class="inp-norm-11">
+            <p class="text">Please put chocolate price</p>
+            <input type="number" class="inp-norm-12">
+            <button class="btn-4">Calculate</button>
+            <div class="out-norm-11">You can buy: <span class="norm-1-1-result result"></span></div>
+            <div class="out-norm-12">Odd money: <span class="norm-1-2-result result"></span></div>
+        </div>
+
+        <div class="task-norm-2 container">
+            <h4 class="title">Task normal No.2</h4>
+            <p class="text">Please put any three digit number</p>
+            <input type="number" class="inp-norm-2">
+            <button class="btn-5">Calculate</button>
+            <div class="out-norm-2">Result: <span class="norm-2-1-result result"></span></div>
+        </div>
     </div>
 
-    <div class="task-min-3 container">
-        <p>Please put flash drive memory (Gb)</p>
-        <input type="text" class="inp-min-3">
-        <button class="btn-3">Calculate</button>
-        <div class="out-min-3">Enough space for: <span class="min-3-1-result result"></span><span> files</span></div>
-        <div class="out-min-3">Memory left: <span class="min-3-2-result result"></span><span> Mb</span></div>
+    <div class="maximum">
+        <div class="task-max-1 container">
+            <h4 class="title">Task maximum No.1</h4>
+            <p class="text">Please put deposit amount</p>
+            <p class="text">(interest rate: 5% per year)</p>
+            <input type="number" class="inp-max-1">
+            <p class="text">Please put deposit period (monthes)</p>
+            <input type="number" class="inp-max-2">
+            <button class="btn-6">Calculate</button>
+            <div class="out-max-1">You'll get: <span class="max-1-result result"></span></div>
+        </div>
     </div>
+
+
 
 
     <script src="./main.js"></script>
