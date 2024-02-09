@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>'Sasha', 'Dima', 'Vlad', 'Olya', 'Dasha'</h2>
+    <input type="text" class="inp" placeholder="Search">
+    <button class="btn-1">Search</button>
+    <button class="btn-2">Show All</button>
+
+    <div class="out"></div>
+    <ul class="out-2"></ul>
+
+    <script>
+
+
+        // 1: Umowa start let i = 0;
+        // 2: Umowa de zupynytys i < 10;
+        // 3: Dowjyna kroku i = i+1 abo i++
+        // for (let i = 0; i <= 10; i++) {
+        //     let out = document.querySelector('.out')
+
+        //     if (i == 3) {
+        //         continue;
+        //         out.innerHTML += `<h2 style="color: red">Sasha</h2>`
+        //     }
+
+        //     out.innerHTML += `<h2>Sasha ${i}</h2>`
+        // }
+
+        // for (let i = 0; i <= 10; i++) {
+        //     let out = document.querySelector('.out')
+
+        //     if (i == 3) {
+        //         out.innerHTML += `<h2 style="color: red">Sasha</h2>`
+        //         break;
+        //     }
+
+        //     out.innerHTML += `<h2>Sasha ${i}</h2>`
+        // }
+
+        // for (let i = 0; i <= 10; i++) {
+        //     let out = document.querySelector('.out')
+
+        //     if (i % 2 === 0) {
+        //         continue;
+        //     }
+        //     else {
+        //         console.log(i)
+        //     }
+        // }
+
+        // while (i <= 10;) {
+        //     console.log(i)
+        // }
+
+        // for (let i = 5; i <= 10; i++) {
+        //     console.log(i)
+        // }
+
+        // for (let i = 10; i >= 0; i--) {
+        //     console.log(i)
+        // }
+        let inp = document.querySelector('.inp')
+        let btn = document.querySelector('.btn-1')
+        let btn2 = document.querySelector('.btn-2')
+        let out = document.querySelector('.out')
+        let out2 = document.querySelector('.out-2')
+        let users = ['Sasha', 'Dima', 'Vlad', 'Olya', 'Dasha']
+
+        btn.onclick = () => {
+            out2.innerHTML = ""
+            for (let i = 0; i < users.length; i++) {
+                if (users[i] == inp.value) {
+                    out2.innerHTML = users[i]
+                    break
+                }
+                else {
+                    out2.innerHTML = "User is not found"
+                }
+            }
+        }
+
+        btn2.onclick = () => {
+            out2.innerHTML = ""
+            for (let i = 0; i < users.length; i++) {
+                out2.innerHTML += `<li>${users[i]}</li>`
+            }
+        }
+
+    </script>
+</body>
+
+</html>
