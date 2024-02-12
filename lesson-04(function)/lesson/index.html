@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="inp1">
+    <select class="sel" name="" id="">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="x">x</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" class="inp2">
+    <button class="btn">Add</button>
+    <div class="out"></div>
+
+    <div class="card">
+
+    </div>
+
+    <script>
+
+        let btn1 = document.querySelector('.btn')
+        let out1 = document.querySelector('.out')
+        let inp1 = document.querySelector('.inp1')
+        let inp2 = document.querySelector('.inp2')
+        let sel = document.querySelector('.sel')
+
+        // //Function declaration
+        // function test() {
+        //     console.log("test");
+        // }
+
+        // btn1.onclick = test
+
+        // //Function expression
+
+        // let TestFunc = function () {
+        //     console.log("test222");
+        // }
+
+
+        // let arrTest = () => {
+        //     console.log("test Arrow");
+        // }
+
+
+        //Example
+
+        // function consolLog(a, b) {
+        //     console.log(a + b);
+        // }
+
+        // btn1.onclick = () => {
+        //     consolLog(+inp1.value, +inp2.value)
+        // }
+
+
+        // function testReturn() {
+        //     return `<h2>Sasha</h2>`
+        // }
+
+        // out1.innerHTML = testReturn()
+
+        // function RenderTitle(name) {
+        //     return `<h2>${name}</h2>`
+        // }
+
+        // for (let i1 = 1; i1 <= 10; i1++) {
+        //     out1.innerHTML += RenderTitle('Sasha')
+        // }
+
+        //Task
+
+        // function renderName(name, color) {
+        //     let title = `<h2 style="color: ${color}">${name}</h2>`
+
+        //     return title
+        // }
+
+        // let name = ['Sasha', 'Sasha1', 'Sasha2', 'Sasha3', 'Sasha4', 'Sasha5',]
+
+        // for (let i2 = 0; i2 < name.length; i2++) {
+        //     if (i2 == 3) {
+        //         out1.innerHTML += renderName(name[i2], "blue")
+        //         continue
+        //     }
+        //     out1.innerHTML += renderName(name[i2], "red")
+        // }
+
+        //Task end
+
+
+        function calc(num1, num2, sym) {
+            if (sel.value == '+') {
+                return Number(num1) + Number(num2)
+            }
+            else if (sel.value == '-') {
+                return Number(num1) - Number(num2)
+            }
+            else if (sel.value == 'x') {
+                return Number(num1) * Number(num2)
+            }
+            else if (sel.value == '/') {
+                return Number(num1) / Number(num2)
+            }
+        }
+
+        btn1.onclick = () => {
+            out1.innerHTML = calc(inp1.value, inp2.value, sel)
+        }
+
+
+
+    </script>
+</body>
+
+</html>
