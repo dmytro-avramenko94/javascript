@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="out"></div>
+
+
+    <script>
+
+        const tesla = {
+            name: 'Tesla',
+            description: 'Good electric car',
+            img: 'https://hips.hearstapps.com/hmg-prod/images/2024-tesla-model-s-107-6572200e43fa1.jpg?crop=0.497xw:0.560xh;0.243xw,0.232xh&resize=768:*',
+            priceUSD: 30000,
+            priceUAH: function () {
+                return this.priceUSD * 37
+            }
+        }
+
+        console.log(tesla.priceUAH());
+
+        let out = document.querySelector('.out')
+
+        out.innerHTML = `
+             <div class="card">
+              <h2>${tesla.name}</h2>
+              <p>${tesla.description}</p>
+              <img src="${tesla.img}" alt="" width="300">
+              <p>Price ($): ${tesla.priceUSD}</p>
+              <p>Price (UAH): ${tesla.priceUAH()}</p>
+            </div>
+            `
+
+
+    </script>
+</body>
+
+</html>

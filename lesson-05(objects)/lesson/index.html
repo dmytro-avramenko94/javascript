@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        const obj = {} //Object
+        const arr = [] //Array
+
+
+        //Object
+        // Ключ: значення
+        const user = {
+            name: 'Sasha',
+            age: 1984,
+            isLogin: true,
+            querySelector: function () {
+                console.log(2024 - this.age);
+            }
+        }
+
+        // user.querySelector()
+        console.log((user.name + " " + user.age))
+
+        user.lastname = "Kol" //Додавання ключа в обєкті
+        delete user.lastname //Видалення ключа
+
+        if (user.isLogin) {
+            console.log("Hello" + " " + user.name);
+        }
+
+
+        //Функції обєктів
+        user.querySelector()
+
+
+        //Цикли для обєктів
+
+
+    </script>
+</body>
+
+</html>
