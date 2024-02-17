@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .item__title {
+            text-align: center;
+        }
+
+        .disable {
+            opacity: 0.5;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <select name="" id="">
+            <option value="Human">Human</option>
+            <option value="Human">Duck</option>
+        </select>
+        <label for="iu1">
+
+            Живий
+            <input type="checkbox">
+        </label>
+        <label for="iu2">
+
+            не Живий
+            <input type="checkbox">
+        </label>
+
+        <button>Search</button>
+        <button class="prev">Prev</button>
+        <button class="next">Next</button>
+
+    </header>
+
+    <div class="row">
+
+
+    </div>
+    <div class="out-pages"></div>
+
+
+    <script>
+
+        let out = document.querySelector('.row')
+        let outPages = document.querySelector('.out-pages')
+        let btnNext = document.querySelector('.next')
+        let btnPrev = document.querySelector('.prev')
+
+        let page = 1
+
+
+
+        function buttonNext(num) {
+            out.innerHTML = ""
+            fetch(`https://rickandmortyapi.com/api/character?page=${num}`)
+                .then(data => data.json())
+                .then(data => {
+                    console.log(data);
+                    data.results.map(item => out.innerHTML += ` 
+                    <div class="item">
+                        <h2 class="item__title"> ${item.name} </h2>
+                        <img class="item__img" src="${item.image}">
+                        <p class="item__race"> Race: ${item.species}</p>
+                        <p class="item__status"> Status: ${item.status}</p>
+                     </div>
+                         `)
+
+                })
+        }
+
+        buttonNext(page)
+        console.log(page);
+
+
+        btnNext.onclick = () => {
+
+            if (page >= 1 && page < 42) {
+                buttonNext(page++)
+            }
+            else {
+                btnNext.classList.add('disable')
+            }
+        }
+        btnPrev.onclick = () => {
+            if (page > 1 && page < 42) {
+                buttonNext(page--)
+            }
+            else {
+                btnPrev.classList.add('disable')
+            }
+        }
+        outPages.innerHTML = page
+
+    </script>
+</body>
+
+</html>
