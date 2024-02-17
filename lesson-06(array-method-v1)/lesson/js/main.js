@@ -85,15 +85,14 @@ function showAll() {
     })
 }
 
-
+let addedBrands = {}
 
 cars.map(car => {
-    if (car.brand == 'Volkswagen') {
-        console.log(car.brand);
-    }
-    selectOut.innerHTML += `
+    if (!addedBrands[car.brand]) {
+        selectOut.innerHTML += `
     <option value="${car.brand}"> ${car.brand} </option>
-    `
+    `}
+    addedBrands[car.brand] = true;
 })
 
 btnSortBrand.onclick = () => {

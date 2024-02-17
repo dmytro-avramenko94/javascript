@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Count + / -</h2>
+    <div class="count">
+        <span class="btnMinus">-</span>
+        <span class="countOut">0</span>
+        <span class="btnPlus">+</span>
+    </div>
+    <hr>
+
+    <h2>
+        To Do List
+    </h2>
+
+    <input class='inp' type="text"> <button class="btn">add</button>
+    <ol class='out'>
+
+    </ol>
+
+    <div class="count2">0</div>
+
+    <hr>
+
+    <h2>
+        Search
+    </h2>
+
+    <input class=inp2 type="text" name="" id="" placeholder="Id">
+    <button class='btn2'>Search</button>
+
+    <h5>Ваш товар: <span class="out2"></span></h5>
+
+    <script>
+
+        let btnPlus = document.querySelector('.btnPlus')
+        let btnMinus = document.querySelector('.btnMinus')
+        let countOut = document.querySelector('.countOut')
+
+        btnPlus.onclick = () => {
+            countOut.innerHTML = +countOut.innerHTML + +1
+        }
+        btnMinus.onclick = () => {
+            if (countOut.innerHTML > 0) {
+                countOut.innerHTML = countOut.innerHTML - 1
+            }
+            else {
+                countOut.innerHTML = 0
+            }
+        }
+
+        let inp = document.querySelector('.inp')
+        let btn = document.querySelector('.btn')
+        let out = document.querySelector('.out')
+        let count = document.querySelector('.count2')
+        let countStart = 1
+
+        btn.onclick = () => {
+            out.innerHTML += `<li>${inp.value}</li>`
+            count.innerHTML = countStart++
+        }
+
+        const items = [
+            {
+                name: 'Test1',
+                id: 123,
+            },
+            {
+                name: 'Test2',
+                id: 223,
+            },
+            {
+                name: 'Test3',
+                id: 323,
+            },
+            {
+                name: 'Test4',
+                id: 423,
+            },
+
+        ]
+
+        let inp2 = document.querySelector('.inp2')
+        let btn2 = document.querySelector('.btn2')
+        let out2 = document.querySelector('.out2')
+
+
+
+        btn2.onclick = () => {
+            items.map(item => {
+                if (inp2.value == item.id) {
+                    out2.innerHTML = item.name
+                }
+                // else if (inp2.value != item.id) {
+                //     out2.innerHTML = 'Not found'
+                // }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

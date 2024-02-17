@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text">
+    <button>Add</button>
+
+    <div class="card"></div>
+    <div class="out"></div>
+
+    <script>
+        let btn = document.querySelector('button')
+        let inp = document.querySelector('input')
+        let out = document.querySelector('.out')
+        let card = document.querySelector('.card')
+
+        let arr2 = [1, 2, 3, 4]
+
+
+        btn.onclick = () => { addItem() }
+
+        // card.innerHTML = arr2.length
+
+        function addItem() {
+            out.innerHTML = ""
+            arr2.push(inp.value)
+            card.innerHTML = arr2.length
+
+            arr2.map(item => out.innerHTML += item + `<br>`)
+        }
+
+        //Adding elements to array
+        arr2.push(5) //na pochatku
+        arr2.unshift(0) //w kinci
+
+        //Deleting elements from array
+        arr2.shift() //na pochatku
+        arr2.pop() //w kinci
+
+        console.log(arr2);
+
+        let obj = {
+            name: 'Sasha',
+            age: 22,
+            isLogin: true
+        }
+        console.log(obj);
+        obj.lastName = 'Kol'
+
+    </script>
+</body>
+
+</html>
