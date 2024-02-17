@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DOM</h1>
+    <div class="out"></div>
+
+
+
+
+    <script>
+        let out = document.querySelector('.out')
+
+        let h5 = document.createElement('h5')
+        h5.classList.add('title', 'test')
+        h5.innerHTML = "Hello Sasha"
+
+        let span = document.createElement('span')
+        span.classList.add('red')
+        span.innerHTML = "$"
+
+        let btn = createElement('button')
+        btn.innerHTML = 'X'
+        btn.onclick = () => {
+            out.innerHTML = ""
+        }
+
+        h5.append(span, btn)
+
+        out.append(h5)
+
+
+
+    </script>
+
+</body>
+
+</html>
