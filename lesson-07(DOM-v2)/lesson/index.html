@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            background-color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="id-1">DOM</h1>
+    <div class="out">
+
+        <h2 class="title"></h2>
+        <img src="/test" alt="img">
+    </div>
+
+    <div class="out2">
+        2
+        <h2 class="title"></h2>
+
+    </div>
+
+    <div class="out3">
+
+        <h2 class="title"></h2>
+
+    </div>
+
+    <button class="btn">test</button>
+    <script>
+        //Znajty i dodaty
+
+        let title = document.querySelector('.out .title')
+        let allTitle = document.querySelectorAll('.title')
+        let btn = document.querySelector('.btn')
+
+        let img = document.querySelector('.out img')
+
+        let outId = document.getElementById('id-1')
+        let outTag = document.getElementsByName('h1')
+
+        title.innerHTML = 'test'
+        title.innerText = 'ddd'
+        title.classList.add('blue', 'red')
+        title.classList.remove('red')
+        title.classList.toggle('red')
+
+        img.getAttribute('src')
+        img.setAttribute('class', 'blue')
+
+        let count = 3
+        console.log(title.style);
+        title.style.border = '3px solid red'
+
+        btn.onclick = () => {
+            title.style.border = `${count++}px solid red`
+        }
+
+
+        //Stworennia elementu
+
+        let createDiv = document.createElement('h2')
+        createDiv.innerHTML = '1 adasd'
+        createDiv.classList.add('title')
+
+
+        outId.append(createDiv)
+
+    </script>
+
+
+</body>
+
+</html>

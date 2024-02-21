@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul class="out"></ul>
+
+
+    <script>
+
+        let out = document.querySelector('.out')
+
+        const users = [
+            {
+                name: 'Name 1',
+                age: 22
+            },
+            {
+                name: 'Name 2',
+                age: 23
+            },
+            {
+                name: 'Name 3',
+                age: 56
+            },
+            {
+                name: 'Name 4',
+                age: 34
+            },
+            {
+                name: 'Name 5',
+                age: 25
+            },
+        ]
+
+        function createItem(name) {
+            let li = document.createElement('li')
+            li.innerHTML = name
+
+            return li
+        }
+
+
+        users.map(item => {
+            out.append(createItem(item.name))
+        })
+
+    </script>
+</body>
+
+</html>

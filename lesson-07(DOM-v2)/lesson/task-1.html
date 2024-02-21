@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+
+    <script>
+
+        const root = document.getElementById('root')
+
+        const users = [
+            {
+                name: 'Name 1',
+                age: 29
+            }
+            {
+                name: 'Name 2',
+                age: 23
+            }
+            {
+                name: 'Name 3',
+                age: 25
+            }
+            {
+                name: 'Name 4',
+                age: 62
+            }
+            {
+                name: 'Name 5',
+                age: 15
+            }
+        ]
+
+        let sectionHero = document.createElement('section')
+        sectionHero.classList.add('hero')
+        let divContainer = document.createElement('div')
+        divContainer.classList.add('container')
+
+        sectionHero.append(divContainer)
+
+        users.map(user => {
+
+        })
+
+
+
+
+        root.append(sectionHero)
+
+    </script>
+
+</body>
+
+</html>
