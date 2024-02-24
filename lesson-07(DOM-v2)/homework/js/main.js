@@ -107,37 +107,34 @@ let btn = document.querySelector('.selects__btn')
 let seriesSelect = document.querySelector('.selects__series')
 let fuelTypeSelect = document.querySelector('.selects__fuel-type')
 
+//Sworennia katrochky avto
+function createCard(item) {
+    let card = document.createElement('div')
+    let cardImg = document.createElement('img')
+    cardImg.src = item.img
+    cardImg.width = 300
+    cardImg.height = 200
+    let cardTitle = document.createElement('h3')
+    let cardFuel = document.createElement('p')
+    let cardPrice = document.createElement('p')
+    card.append(cardImg, cardTitle, cardFuel, cardPrice)
+    cardTitle.innerHTML = 'BMW' + ' ' + item.model + ', ' + item.series
+    cardFuel.innerHTML = item.fuel
+    cardPrice.innerHTML = item.price + ' €'
 
-cars.map(car => {
+    return card
+}
 
-    //Stworennia funkciji dla vidobrajennia kartky
-    let createCard = function () {
-        let card = document.createElement('div')
-        let cardImg = document.createElement('img')
-        cardImg.src = car.img
-        cardImg.width = 300
-        cardImg.height = 200
-        let cardTitle = document.createElement('h3')
-        let cardFuel = document.createElement('p')
-        let cardPrice = document.createElement('p')
-        card.append(cardImg, cardTitle, cardFuel, cardPrice)
-        cardTitle.innerHTML = 'BMW' + ' ' + car.model + ', ' + car.series
-        cardFuel.innerHTML = car.fuel
-        cardPrice.innerHTML = car.price + ' €'
+//Vidobrajennia kartochok w out
+cars.map(car => out.append(createCard(car)))
 
-        return card
-    }
-
-    let card = createCard()
-    out.append(card)
-
-})
-
-//Select Fuel bez powtoren
+//select Fuel bez powtoren
 let uniqueFuel = new Set()
+
 cars.forEach(car => {
     uniqueFuel.add(car.fuel)
 })
+
 uniqueFuel.forEach(fuel => {
     let optionFuel = document.createElement('option')
     optionFuel.innerHTML = fuel
@@ -145,41 +142,51 @@ uniqueFuel.forEach(fuel => {
 })
 
 
-//Sortuvannia po fuel type
 
-btn.onclick = () => {
-    cars.map(car => {
+//Select Series bez powtoren
+let uniqueSeries = new Set()
+cars.forEach(car => {
+    uniqueSeries.add(car.series)
+})
 
-        let createCard = function () {
-            let card = document.createElement('div')
-            let cardImg = document.createElement('img')
-            cardImg.src = car.img
-            cardImg.width = 300
-            cardImg.height = 200
-            let cardTitle = document.createElement('h3')
-            let cardFuel = document.createElement('p')
-            let cardPrice = document.createElement('p')
-            card.append(cardImg, cardTitle, cardFuel, cardPrice)
-            cardTitle.innerHTML = 'BMW' + ' ' + car.model + ', ' + car.series
-            cardFuel.innerHTML = car.fuel
-            cardPrice.innerHTML = car.price + ' €'
-
-            return card
-        }
-
-        let card = createCard()
+uniqueSeries.forEach(series => {
+    let optionSeries = document.createElement('option')
+    optionSeries.innerHTML = series
+    seriesSelect.append(optionSeries)
+})
 
 
-        if (car.fuel == 'diesel') {
-            out.innerHTML = ''
-            out.append(card)
-        }
+//Filtracija
+btn.addEventListener('click', () => {
 
 
-    })
-}
+    //po typu Fuel
+    let filteredByFuel = cars.filter(car => car.fuel == fuelTypeSelect.value)
+
+    out.innerHTML = ''
+
+    if (fuelTypeSelect.value == 'diesel' || fuelTypeSelect.value == 'petrol') {
+        filteredByFuel.forEach(car => {
+            out.append(createCard(car))
+        })
+    }
 
 
+    //Po series
 
+    let filteredBySeries = cars.filter(car => car.series == seriesSelect.value)
+
+    out.innerHTML = ''
+
+    if (seriesSelect.value == 'Series 1' ||
+        seriesSelect.value == 'Series 2' ||
+        seriesSelect.value == 'Series 3' ||
+        seriesSelect.value == 'Series 4' ||
+        seriesSelect.value == 'Series 5') {
+        filteredBySeries.forEach(car => {
+            out.append(createCard(car))
+        })
+    }
+})
 
 
