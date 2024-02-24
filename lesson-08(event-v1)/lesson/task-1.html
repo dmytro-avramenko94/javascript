@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input class="inp-check" type="checkbox"> Task 1
+
+
+
+    <div class="count">0</div>
+
+
+    <script>
+        let inpCheck = document.querySelector('.inp-check')
+        let countOut = document.querySelector('.count')
+        let count = 0
+
+        inpCheck.addEventListener('change', () => {
+            if (inpCheck.checked) {
+                countOut.innerHTML = ++count
+            }
+            else {
+                countOut.innerHTML = --count
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

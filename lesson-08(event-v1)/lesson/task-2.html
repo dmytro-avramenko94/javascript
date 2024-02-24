@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+
+    <button>Search</button>
+
+    <ol class="out"></ol>
+
+    <hr>
+    <label for="ch1">
+        <input type="checkbox" name="" id="" class="inp2">
+        More than 18 years old
+    </label>
+
+    <ol class="out2"></ol>
+
+    <script>
+        let inp = document.querySelector('input')
+        let btn = document.querySelector('button')
+        let out = document.querySelector('.out')
+        let out2 = document.querySelector('.out2')
+        let inp2 = document.querySelector('.inp2')
+
+        let arr = ['Sasha', 'Dima', 'Olia', 'Katia']
+
+        let arr2 = [
+            {
+                name: 'Sasha',
+                age: 22
+            },
+            {
+                name: 'Dima',
+                age: 25
+            },
+            {
+                name: 'Olia',
+                age: 12
+            },
+            {
+                name: 'Katia',
+                age: 36
+            },
+        ]
+
+        // btn.addEventListener('click', () => {
+        //     arr.map(item => {
+        //         // if (item.indexOf('a') >= 0) {
+        //         //     console.log(item);
+        //         // }
+
+        //         if (item.includes(inp.value)) {
+        //             console.log(item);
+        //         }
+        //     })
+        // })
+
+        inp.addEventListener('keyup', () => {
+            out.innerHTML = ''
+            arr.map(item => {
+                let lCase = item.toLocaleLowerCase()
+                let valC = inp.value.toLocaleLowerCase()
+
+                if (lCase.includes(valC)) {
+                    let li = document.createElement('li')
+                    li.innerHTML = item
+
+                    out.append(li)
+                }
+            })
+        })
+
+        inp2.addEventListener('change', () => {
+            out2.innerHTML = ''
+            arr2.map(item => {
+                let li = document.createElement('li')
+
+                if (inp2.checked) {
+                    if (item.age > 18) {
+                        li.innerHTML = item.name + ' ' + item.age + ' years old'
+                        out2.append(li)
+                    }
+                }
+                else {
+                    out2.innerHTML = ''
+                }
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>

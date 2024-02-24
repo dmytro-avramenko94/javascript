@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" class="inp-1">
+    <input type="checkbox" class="inp-check">
+
+    <button class="btn">Test</button>
+
+
+
+    <script>
+
+        let btn = document.querySelector('.btn')
+        let inpCheck = document.querySelector('.inp-check')
+        let inp1 = document.querySelector('.inp-1')
+
+        //Old version
+        // btn.onclick = () => {
+        //     console.log('test 1');
+        // }
+        // btn.onclick = () => {
+        //     console.log('test 2');
+        // }
+
+
+        //New version
+        //btn.addEventListener('click', () => { console.log('test 1') }, { once: true })
+        btn.addEventListener('click', () => {
+            //console.log('test 1')
+        })
+        btn.addEventListener('click', () => {
+            // console.log('test 2')
+        })
+
+        inpCheck.addEventListener('change', () => {
+            if (inpCheck.checked) {
+                inp1.classList.remove('error')
+            }
+            else {
+                inp1.classList.add('error')
+            }
+        })
+        inp1.addEventListener('change', () => {
+            if (inpCheck.checked) {
+                inp1.classList.remove('error')
+            }
+            else {
+                inp1.classList.add('error')
+            }
+        })
+    </script>
+
+</body>
+
+</html>
