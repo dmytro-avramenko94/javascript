@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+            font-size: 16px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 16px;
+            padding: 10px;
+            border: 1px solid orange;
+            border-radius: 20px;
+        }
+
+        .card:hover {
+            cursor: pointer;
+            background-color: bisque;
+        }
+
+        .active {
+            background-color: bisque;
+        }
+
+        .card__rate {
+            color: green;
+            font-size: 20px;
+        }
+
+        .card__title {
+            font-size: 18px;
+        }
+
+        .card__content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .header {
+            padding: 40px 0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header__inp {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .header__out {
+            font-size: 22px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <ol class="save"></ol>
+            <header class="header">
+                <div class="header__field">
+                    <input class="header__inp" type="number">
+                </div>
+
+                <div class="header__out"></div>
+
+                <button class="btn">show</button>
+            </header>
+
+            <main class="main">
+
+
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+        //https://www.binance.com/bapi/asset/v1/public/asset-service/product/currency
+
+        //fetch().then().then().catch()
+
+
+        let btnShow = document.querySelector('.btn')
+        let main = document.querySelector('.main')
+        let headerOut = document.querySelector('.header__out')
+        let inp = document.querySelector('.header__inp')
+        let save = document.querySelector('.save')
+
+
+        //btnShow.addEventListener('click', showAll)
+
+        function showAll() {
+            fetch('https://www.binance.com/bapi/asset/v1/public/asset-service/product/currency')
+                .then(data => data.json())
+                // .then(data => {
+                //     data.data.map(item => {
+                //         console.log(item)
+                //     })
+                // })
+                .then(data => rendor(data.data))
+                .catch(error => console.log("Pomylka" + " " + error))
+        }
+        showAll()
+
+
+        function rendor(data) {
+            data.map(item => {
+                //console.log(item)
+                main.append(createItem(item))
+            })
+        }
+
+        function createItem(item) {
+            let card = document.createElement('div')
+            card.classList.add('card')
+            card.addEventListener('click', () => {
+                let cards = document.querySelectorAll('.card')
+                cards.forEach(item => {
+                    item.classList.remove('active')
+                })
+                card.classList.add('active')
+                headerOut.innerHTML = inp.value * item.rate + ' ' + item.symbol
+
+                let savePair = document.createElement('li')
+                let savePairData = document.createElement('span')
+                save.append(savePair)
+                savePair.append(savePairData)
+                savePairData.innerHTML += inp.value + '$' + '=' + inp.value * item.rate + ' ' + item.symbol
+            })
+
+            let cardImg = document.createElement('img')
+            cardImg.classList.add('card__img')
+            cardImg.src = item.imageUrl
+
+            let cardContent = document.createElement('div')
+            cardContent.classList.add('card__content')
+
+            let cardTitle = document.createElement('h2')
+            cardTitle.classList.add('card__title')
+            cardTitle.innerHTML = item.fullName
+
+            let cardRate = document.createElement('h5')
+            cardRate.classList.add('card__rate')
+            cardRate.innerHTML = item.rate + ' ' + item.symbol
+
+            cardContent.append(cardTitle, cardRate)
+            card.append(cardImg, cardContent)
+
+            return card
+        }
+
+        // <div class="card">
+        //         <img class="card__img" src="" alt="">
+        //         <div class="card__content">
+        //             <h2 class="card__title"></h2>
+        //             <h5 class="card__rate"></h5>
+        //         </div>
+        //     </div>
+
+    </script>
+</body>
+
+</html>
