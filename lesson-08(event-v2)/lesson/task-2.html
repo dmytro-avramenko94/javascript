@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="out"></div>
+    <button class="btn">Show All</button>
+
+    <div class="count"></div>
+
+    <script>
+        let out = document.querySelector('.out')
+        let btn = document.querySelector('.btn')
+        let countOut = document.querySelector('.count')
+        let users = [
+            {
+                name: 'test 1',
+                age: 22,
+            },
+            {
+                name: 'test 2',
+                age: 90,
+            },
+            {
+                name: 'test 3',
+                age: 50,
+            },
+            {
+                name: 'test 4',
+                age: 19,
+            },
+            {
+                name: 'test 5',
+                age: 22,
+            },
+        ]
+
+        function createli(user) {
+            let li = document.createElement('li')
+            let inp = document.createElement('input')
+            inp.type = 'checkbox'
+            let pName = document.createElement('span')
+            pName.innerHTML = user.name + ' '
+            let pAge = document.createElement('span')
+            pAge.innerHTML = user.age
+            let btnDelete = document.createElement('button')
+            btnDelete.innerHTML = '❌'
+
+            li.append(inp, pName, pAge, btnDelete)
+
+            return li
+        }
+
+
+
+        let numCount = users.length
+
+        btn.addEventListener('click', () => {
+            out.innerHTML = ''
+            countOut.innerHTML = users.length
+            users.map(user => {
+                out.append(createli(user))
+                countOut.innerHTML = --numCount
+            })
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

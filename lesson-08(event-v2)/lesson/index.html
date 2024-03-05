@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .box:nth-child(1) {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+        }
+
+        .box:nth-child(2) {
+            position: absolute;
+            top: 20%;
+            right: 25%;
+        }
+
+        .box:nth-child(3) {
+            position: absolute;
+            top: 30%;
+            right: 50%;
+        }
+
+        .box:nth-child(4) {
+            position: absolute;
+            top: 50%;
+            right: 40%;
+        }
+
+        .container {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <div class="container">
+            <div class="box" data-speed="1">1</div>
+            <div class="box" data-speed="2">2</div>
+            <div class="box" data-speed="1.2">3</div>
+            <div class="box" data-speed="0.8">4</div>
+        </div>
+    </section>
+
+
+    <script>
+        let row = document.querySelector('.container')
+        let box = document.querySelectorAll('.box')
+
+        row.addEventListener('mousemove', (event) => {
+
+            //box[0].style.transform = `translate(${event.clientX / 10}px, ${event.clientY / 10}px)`
+
+            box.forEach(item => {
+                let speed = item.getAttribute('data-speed')
+                item.style.transform = `translate(${event.clientX * speed / 10}px, ${event.clientY * speed / 10}px)`
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>

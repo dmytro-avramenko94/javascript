@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        .low {
+            background-color: green;
+        }
+
+        .middle {
+            background-color: yellow;
+        }
+
+        .high {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>To Do List</h2>
+    <input class="inp" type="text">
+    <select class="select">
+        <option value="low">Low</option>
+        <option value="middle">Middle</option>
+        <option value="high">High</option>
+    </select>
+    <button class="btn">Add</button>
+    <ol class="out">
+
+    </ol>
+    <div class="count"></div>
+
+
+
+    <script>
+
+        let toDoList = []
+        let inp = document.querySelector('.inp')
+        let sel = document.querySelector('.select')
+        let btn = document.querySelector('.btn')
+        let out = document.querySelector('.out')
+        let count = document.querySelector('.count')
+        let countStart = 1
+
+
+
+        function createLi() {
+            let li = document.createElement('li')
+            let taskName = document.createElement('span')
+            taskName.classList.add(`${sel.value}`)
+            taskName.innerHTML = inp.value
+            let checkBox = document.createElement('input')
+            checkBox.type = 'checkbox'
+            let editBtn = document.createElement('button')
+            editBtn.innerHTML = '✏️'
+            let deleteBtn = document.createElement('button')
+            deleteBtn.innerHTML = '❌'
+            li.append(checkBox, taskName, editBtn, deleteBtn)
+
+
+            let countNum = countStart++
+            count.innerHTML = ''
+            count.append(countNum)
+
+
+            checkBox.addEventListener('change', () => {
+                if (checkBox.checked) {
+                    taskName.style.textDecoration = 'line-through'
+                    taskName.classList.remove(`${sel.value}`)
+                    count.innerHTML = ''
+                    count.innerHTML = --countNum
+                }
+                else {
+                    taskName.style.textDecoration = 'none'
+                    taskName.classList.add(`${sel.value}`)
+                    count.innerHTML = ''
+                    count.innerHTML = countNum
+                }
+            })
+
+
+            editBtn.addEventListener('click', () => {
+                taskName.setAttribute('contenteditable', 'true')
+            })
+
+
+            deleteBtn.addEventListener('click', () => {
+                li.remove()
+                if (checkBox.checked) {
+                    count.innerHTML = ++countNum
+                }
+                else {
+                    count.innerHTML = --countNum
+                }
+            })
+
+
+
+
+            return li
+
+
+
+
+
+
+        }
+
+        btn.addEventListener('click', () => {
+            toDoList.push({
+                name: inp.value,
+            })
+            out.append(createLi())
+
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
