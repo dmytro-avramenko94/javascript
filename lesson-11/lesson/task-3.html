@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-3</title>
+</head>
+
+<body>
+
+    <h2>Car Shop</h2>
+
+    <div class="out"></div>
+
+
+    <script>
+
+        let out = document.querySelector('.out')
+
+        let arr = [
+            {
+                name: 'Mers',
+                age: 2001,
+            },
+            {
+                name: 'BMW',
+                age: 2001,
+            },
+            {
+                name: 'Audi',
+                age: 2001,
+            },
+            {
+                name: 'VW',
+                age: 2001,
+            },
+            {
+                name: 'Skoda',
+                age: 2001,
+            },
+            {
+                name: 'Siat',
+                age: 2001,
+            },
+        ]
+
+        let card = localStorage.getItem('card') ? JSON.parse(localStorage.getItem('card'))
+
+        arr.map(item => {
+
+            let h2 = document.createElement('h2')
+            h2.innerHTML = item.name
+            h2.addEventListener('click', () => {
+                card.push({
+                    name: item.name,
+                    age: item.age,
+                })
+
+                localStorage.setItem('card')
+            })
+
+
+            out.append(h2)
+        })
+
+    </script>
+</body>
+
+</html>

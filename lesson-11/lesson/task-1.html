@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task-1</title>
+    <style>
+        .light {
+            background-color: #a39d9d;
+        }
+
+        .dark {
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <input type="checkbox" name="" id="">
+
+
+    <script>
+
+        let inp = document.querySelector('input')
+        let body = document.querySelector('body')
+
+        body.classList.add(localStorage.getItem('theme'))
+
+
+        inp.addEventListener('change', () => {
+            if (inp.checked) {
+                localStorage.setItem('theme', 'dark')
+                body.classList.remove('light')
+                body.classList.add('dark')
+            }
+            else {
+                localStorage.setItem('theme', 'light')
+                body.classList.remove('dark')
+                body.classList.add('light')
+            }
+        })
+
+    </script>
+</body>
+
+</html>
