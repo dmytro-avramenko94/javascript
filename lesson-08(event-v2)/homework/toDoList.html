@@ -44,7 +44,7 @@
         let btn = document.querySelector('.btn')
         let out = document.querySelector('.out')
         let count = document.querySelector('.count')
-        let countStart = 1
+        let countStart = 0
 
 
 
@@ -62,24 +62,23 @@
             li.append(checkBox, taskName, editBtn, deleteBtn)
 
 
-            let countNum = countStart++
-            count.innerHTML = ''
-            count.append(countNum)
+
+            count.innerHTML = ++countStart
+
 
 
             checkBox.addEventListener('change', () => {
                 if (checkBox.checked) {
                     taskName.style.textDecoration = 'line-through'
                     taskName.classList.remove(`${sel.value}`)
-                    count.innerHTML = ''
-                    count.innerHTML = --countNum
+                    count.innerHTML = --countStart
                 }
                 else {
                     taskName.style.textDecoration = 'none'
                     taskName.classList.add(`${sel.value}`)
-                    count.innerHTML = ''
-                    count.innerHTML = countNum
+                    count.innerHTML = ++countStart
                 }
+
             })
 
 
@@ -91,10 +90,10 @@
             deleteBtn.addEventListener('click', () => {
                 li.remove()
                 if (checkBox.checked) {
-                    count.innerHTML = ++countNum
+                    count.innerHTML = countStart
                 }
                 else {
-                    count.innerHTML = --countNum
+                    count.innerHTML = --countStart
                 }
             })
 
