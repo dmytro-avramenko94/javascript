@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dog-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <select class="sel" name="" id="">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+    </select>
+    <button class="btn">Show</button>
+    <div class="out"></div>
+
+    <script>
+
+        let out = document.querySelector('.out')
+        let sel = document.querySelector('.sel')
+        let btn = document.querySelector('.btn')
+
+
+        function getDog() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(data => data.json())
+                .then(data => {
+                    let dogImg = document.createElement('img')
+                    dogImg.src = data.message
+                    dogImg.classList.add('dog-img')
+                    out.append(dogImg)
+
+
+                    //out.innerHTML += `<img src="${data.message}" width="100">`
+                })
+        }
+
+        btn.addEventListener('click', () => {
+            for (let i = 0; i < sel.value; i++) {
+                out.innerHTML = ''
+                getDog()
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>
