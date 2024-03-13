@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-color: bisque;
+            gap: 15px;
+            padding-bottom: 15px;
+        }
+
+        .fullName {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .addBtn,
+        .removeBtn {
+            display: block;
+        }
+
+        .saved-users {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>https://randomuser.me/api/</h3>
+    <ol>
+        <li>Вивести 10 юзерів</li>
+        <li>По кліку ми зберігаемо </li>
+
+        <li>Показати збереженних</li>
+    </ol>
+
+    <div class="favorit">
+        <div class="count">0</div>
+        <button class="btn">show</button>
+    </div>
+
+    <div class="saved-users"></div>
+
+    <main class="out">
+        Сюди Юзери
+    </main>
+
+    <script>
+
+        let main = document.querySelector('.out')
+        main.classList.add('out')
+        let count = document.querySelector('.count')
+        let btn = document.querySelector('.btn')
+        let fav = document.querySelector('.saved-users')
+
+        let savedUsers = localStorage.getItem('Saved users') ? JSON.parse(localStorage.getItem('Saved users')) : []
+
+        count.innerHTML = savedUsers.length
+
+        function getApi() {
+            fetch('https://randomuser.me/api/')
+                .then(data => data.json())
+                .then(data => {
+                    //console.log(data)
+                    main.append(createCard(data))
+                })
+                .catch(error => console.log(error))
+        }
+
+        function createCard(user, saved) {
+            if (saved == 'favorite') {
+                let card = document.createElement('div')
+                card.classList.add('card')
+                let fullName = document.createElement('div')
+                fullName.classList.add('fullName')
+                let name = document.createElement('h3')
+                name.innerHTML = user.results[0].name.first
+                let surname = document.createElement('h3')
+                surname.innerHTML = user.results[0].name.last
+                let photo = document.createElement('img')
+                photo.src = user.results[0].picture.medium
+                let removeBtn = document.createElement('button')
+                removeBtn.classList.add('removeBtn')
+                removeBtn.textContent = 'Remove from Favorite'
+                fullName.append(name, surname)
+                card.append(fullName, photo, removeBtn)
+
+                removeBtn.addEventListener('click', () => {
+                    let cardElement = removeBtn.closest('.card');
+                    let index = Array.from(cardElement.parentNode.children).indexOf(cardElement);
+                    if (index !== -1) {
+                        savedUsers.splice(index, 1);
+                        count.innerHTML = savedUsers.length;
+                        localStorage.setItem('Saved users', JSON.stringify(savedUsers));
+                        cardElement.remove();
+                    }
+                })
+
+                return card
+            }
+            else {
+                let card = document.createElement('div')
+                card.classList.add('card')
+                let fullName = document.createElement('div')
+                fullName.classList.add('fullName')
+                let name = document.createElement('h3')
+                name.innerHTML = user.results[0].name.first
+                let surname = document.createElement('h3')
+                surname.innerHTML = user.results[0].name.last
+                let photo = document.createElement('img')
+                photo.src = user.results[0].picture.medium
+                let addBtn = document.createElement('button')
+                addBtn.classList.add('addBtn')
+                addBtn.textContent = 'Add to Favorite'
+                fullName.append(name, surname)
+                card.append(fullName, photo, addBtn)
+
+
+
+                addBtn.addEventListener('click', () => {
+                    savedUsers.push(user)
+                    count.innerHTML = savedUsers.length
+                    localStorage.setItem('Saved users', JSON.stringify(savedUsers))
+                })
+
+
+                return card
+
+            }
+        }
+
+        function randomUsers(user) {
+            main.innerHTML = ''
+            for (let i = 0; i < 9; i++) {
+                getApi(user)
+            }
+        }
+        randomUsers()
+
+
+
+        btn.addEventListener('click', () => {
+            main.innerHTML = ''
+            savedUsers.map(user => {
+                main.append(createCard(user, 'favorite'))
+            })
+        })
+
+    </script>
+</body>
+
+</html>
