@@ -74,7 +74,9 @@
         let btn = document.querySelector('.btn')
         let fav = document.querySelector('.saved-users')
 
-        let savedUsers = localStorage.getItem('Saved users') ? JSON.parse(localStorage.getItem('Saved users')) : []
+        //let savedUsers = localStorage.getItem('Saved users') ? JSON.parse(localStorage.getItem('Saved users')) : []
+        let savedUsers = JSON.parse(localStorage.getItem('Saved users')) || []
+
 
         count.innerHTML = savedUsers.length
 

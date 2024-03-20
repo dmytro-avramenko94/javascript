@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: #424242;
+        }
+
+        .cardImg {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="out"></div>
+
+    <script>
+        let out = document.querySelector('.out')
+        out.classList.add('out')
+
+        function getApi() {
+            fetch('https://rickandmortyapi.com/api/character')
+                .then(data => data.json())
+                .then(data => {
+                    console.log(data.results);
+                    data.results.map(character => {
+                        out.append(createCard(character))
+                    })
+
+                })
+                .catch(error => console.log(error))
+        }
+
+        getApi()
+
+        function createCard(character) {
+            let card = document.createElement('div')
+            card.classList.add('card')
+            let cardImg = document.createElement('img')
+            cardImg.classList.add('cardImg')
+            cardImg.src = character.image
+            let description = document.createElement('div')
+            let cardName = document.createElement('h2')
+            cardName.innerHTML = character.name
+            let cardStatusSpecies = document.createElement('h4')
+            cardStatusSpecies.innerHTML = character.status + ' - ' + character.species
+            let cardLocationTitle = document.createElement('h5')
+            cardLocationTitle.textContent = 'Last known location:'
+            let cardLocation = document.createElement('h4')
+            cardLocation.innerHTML = character.location.name
+            let cardFirstSeenTitle = document.createElement('h4')
+            cardFirstSeenTitle.textContent = 'First seen in:'
+            let cardFirstSeen = document.createElement('h4')
+            cardFirstSeen.innerHTML = character.episode[0]
+            description.append(cardName, cardStatusSpecies, cardLocationTitle, cardLocation, cardFirstSeenTitle, cardFirstSeen)
+            card.append(cardImg, description)
+
+            return card
+        }
+
+
+    </script>
+</body>
+
+</html>
