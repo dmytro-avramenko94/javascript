@@ -95,6 +95,7 @@
                 else {
                     count.innerHTML = --countStart
                 }
+                console.log(toDoList)
             })
 
 
@@ -112,7 +113,9 @@
         btn.addEventListener('click', () => {
             toDoList.push({
                 name: inp.value,
+
             })
+            console.log(toDoList)
             out.append(createLi())
 
         })
